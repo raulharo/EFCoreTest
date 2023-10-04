@@ -3,6 +3,7 @@ using System;
 using EFCoreTest_DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EFCoreTest_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231004160236_AddAuthorPublisherSubcatgory")]
+    partial class AddAuthorPublisherSubcatgory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,8 +61,15 @@ namespace EFCoreTest_DataAccess.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdBook"));
 
+                    b.Property<string>("Author")
+                        .HasColumnType("text");
+
                     b.Property<string>("ISBN")
                         .HasColumnType("text");
+
+                    b.Property<int>("PageCount")
+                        .HasColumnType("integer")
+                        .HasColumnName("page_count");
 
                     b.Property<decimal>("Price")
                         .HasPrecision(10, 5)
@@ -71,28 +81,6 @@ namespace EFCoreTest_DataAccess.Migrations
                     b.HasKey("IdBook");
 
                     b.ToTable("Books");
-                });
-
-            modelBuilder.Entity("EFCoreTest_Model.Models.BookDetail", b =>
-                {
-                    b.Property<int>("BookDetail_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("BookDetail_Id"));
-
-                    b.Property<int>("NumberOfChapters")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("NumberOfPages")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Weight")
-                        .HasColumnType("text");
-
-                    b.HasKey("BookDetail_Id");
-
-                    b.ToTable("BookDetails");
                 });
 
             modelBuilder.Entity("EFCoreTest_Model.Models.Category", b =>
