@@ -10,16 +10,11 @@ namespace EFCoreTest_Model.Models
 {
     public class Fluent_Author
     {
-        [Key]
         public int Author_Id { get; set; }
-        [Required]
-        [MaxLength(50)]
         public string FirstName { get; set; }
-        [Required]
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
         public string Location { get; set; }
-        [NotMapped]
         public string FullName 
         { 
             get
@@ -31,6 +26,6 @@ namespace EFCoreTest_Model.Models
         // we are defining a many to many relationship between the Books and Authors tables. EF Core is smart enough to recognize
         // that having these navigation properties in both tables means we want to define a many to many relationship.
         // (There is a manual way of defining junction tables and many to many relationships but EF Core can handle it well enough for most things.)
-        public List<Fluent_Book> Books { get; set; }
+        // public List<Fluent_Book> Books { get; set; }
     }
 }

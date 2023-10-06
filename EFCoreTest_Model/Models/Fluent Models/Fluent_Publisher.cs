@@ -10,9 +10,7 @@ namespace EFCoreTest_Model.Models
 {
     public class Fluent_Publisher
     {
-        [Key]
         public int Publisher_Id { get; set; }
-        [Required]
         public string Name { get; set; }
         public string Location { get; set; }
         // Notice that this navigation property is not holding a single value, but rather it is holding a list of books.
