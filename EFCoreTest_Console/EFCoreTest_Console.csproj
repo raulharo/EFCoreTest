@@ -13,4 +13,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EFCoreTest_DataAccess\EFCoreTest_DataAccess.csproj" />
+    <ProjectReference Include="..\EFCoreTest_Model\EFCoreTest_Model.csproj" />
+  </ItemGroup>
+
 </Project>

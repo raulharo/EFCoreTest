@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFCoreTest_Model.Models.Fluent_Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,6 +23,8 @@ namespace EFCoreTest_Model.Models
                 return $"{FirstName} {LastName}";
             } 
         }
+        public List<Fluent_Book> Books { get; set; }
+        public List<Fluent_BookAuthorMap> BookAuthorMap { get; set; }
         // By having this navigation property be a List and point to the Books table and doing the same in the Books table,
         // we are defining a many to many relationship between the Books and Authors tables. EF Core is smart enough to recognize
         // that having these navigation properties in both tables means we want to define a many to many relationship.

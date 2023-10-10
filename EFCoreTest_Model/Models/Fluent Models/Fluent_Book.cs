@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFCoreTest_Model.Models.Fluent_Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,7 +19,8 @@ namespace EFCoreTest_Model.Models
         public Fluent_BookDetail BookDetail { get; set; }
         public int Publisher_id { get; set; }
         public Fluent_Publisher Publisher { get; set; }
-        // public List<Fluent_Author> Authors { get; set; }
+        public List<Fluent_Author> Authors { get; set; }
+        public List<Fluent_BookAuthorMap> BookAuthorMap { get; set; }
 
     }
 }
